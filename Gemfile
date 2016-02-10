@@ -46,6 +46,7 @@ gem "devise-async"
 # adds bootstrap to form automatically
 gem 'simple_form'
 
+gem 'stripe'
 #Web server
 gem "puma"
 
