@@ -47,6 +47,11 @@ gem "devise-async"
 gem 'simple_form'
 
 gem 'stripe'
+
+#for processing stripe events
+gem 'stripe_event'
+
+
 #Web server
 gem "puma"
 
@@ -58,7 +63,7 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'ultrahook'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
