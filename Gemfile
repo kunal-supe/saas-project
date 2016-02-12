@@ -51,10 +51,10 @@ gem 'stripe'
 #for processing stripe events
 gem 'stripe_event'
 
-
+gem 'apartment'
 #Web server
 gem "puma"
-
+gem 'apartment-sidekiq'
 gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'autoprefixer-rails', '~> 5.2.0'
 

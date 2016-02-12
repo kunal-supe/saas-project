@@ -1,6 +1,18 @@
-<%= link_to('Login', new_user_session_path) %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<%= link_to('Sign up', new_user_registration_path) %>
-<%= link_to('Manage Subscription', subscriptions_path) %>
+<% if current_user.nil? %>
+
+    <% if request.subdomain.blank? || request.subdomain == 'www' %>
+        <%= link_to('Sign up', new_user_registration_path) %>
+    <% else %>
+        <%= link_to('Login', new_user_session_path) %>
+        <br>
+    <% end %>
+
+<% else %>
+    Welcome <%= current_user.email %>
+    <br>
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    <%= link_to('Manage Subscription', subscriptions_path) %>
+
+<% end %>
 
 <h1> <%= @message %> </h1>
