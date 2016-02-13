@@ -10,6 +10,8 @@
 <% else %>
     Welcome <%= current_user.email %>
     <br>
+    <h3>Sample - Multi tenant saas application in Ruby on Rails</h3>
+    <br>
     <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
     <%= link_to('Manage Subscription', subscriptions_path) %>
 
