@@ -42,7 +42,7 @@ gem "awesome_print"
 gem "sidekiq"
 #For sending emails in the background
 gem "devise-async"
-
+gem 'devise_invitable'
 # adds bootstrap to form automatically
 gem 'simple_form'
 
@@ -66,7 +66,7 @@ group :development, :test do
   gem 'ultrahook'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem "letter_opener", :group => :development
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
