@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
   validate :subdomain_is_unique, on: :create
   after_validation :create_tenant
   after_create :create_account
-
+  after_create :add_role_to_user
   # def confirmation_required?
   #   false
   # end
@@ -46,10 +47,24 @@ class User < ActiveRecord::Base
 # We validate submain is unique.
 # User model get saved in tenant
 # Account model will be saved in public tenant
-  def create_tenant
-      return false unless self.errors.empty?
-      Apartment::Tenant.create(subdomain)
-      Apartment::Tenant.switch!(subdomain)
+def create_tenant
+   return false unless self.errors.empty?
+   #If its a new record, create the tenant
+   #For Edits, do not create
+   if self.new_record?
+     Apartment::Tenant.create(subdomain)
+   end
+   #Change schema to the tenant
+   Apartment::Tenant.switch!(subdomain)
+ end
+
+# Add default role to admin
+  def add_role_to_user
+    if created_by_invite?
+      add_role :app_user
+    else
+      add_role :app_admin
+    end
   end
 
 end

@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :authorize_user
+  before_action :authorize_user
   def new
      @plans = Plan.all
   end
@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
       #Get customer_id
       current_account = Account.find_by_email(current_user.email)
       customer_id     = current_account.customer_id
-      
+
       # ap customer_id
       # ap token
 
@@ -143,6 +143,11 @@ class SubscriptionsController < ApplicationController
             subscription = current_subscription.save
         end
         return subscription
+    end
+
+# authorize user or rails exception
+    def authorize_user
+      authorize! :manage, :subscriptions
     end
 
 end

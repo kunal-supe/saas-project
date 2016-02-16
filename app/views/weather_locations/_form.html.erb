@@ -1,0 +1,13 @@
+<%= simple_form_for(@weather_location) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :weather_grid %>
+    <%= f.input :latitude, :as => :hidden %>
+    <%= f.input :longitude, :as => :hidden  %>
+    <%= f.input :city %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -47,7 +47,7 @@ gem 'devise_invitable'
 gem 'simple_form'
 
 gem 'stripe'
-
+gem "rolify"
 #for processing stripe events
 gem 'stripe_event'
 
@@ -59,7 +59,9 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'autoprefixer-rails', '~> 5.2.0'
 
 gem 'rails_12factor', group: :production
-
+gem 'cancancan'
+gem "geocoder"
+gem 'forecast_io'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
