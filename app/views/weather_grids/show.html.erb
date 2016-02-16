@@ -1,7 +1,8 @@
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><%= @weather_grid.name %></h3>
+            <h3 class="panel-title"><%= link_to @weather_grid.name, weather_grids_path %></h3>
+            <h5><%= link_to "Add Location", new_weather_location_path %></h5>
         </div>
         <br>
 

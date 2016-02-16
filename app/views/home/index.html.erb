@@ -9,9 +9,7 @@
 
 <% else %>
     Welcome <%= current_user.email %>
-    <br>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-
+    
     <% if can? :manage, :subscriptions %>
       <%= link_to('Manage Subscription', subscriptions_path) %>
     <% end %>

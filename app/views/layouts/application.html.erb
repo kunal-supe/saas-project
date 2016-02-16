@@ -8,7 +8,10 @@
 </head>
 <body>
 
-
+<%= link_to "Home", root_path %>
+<% if current_user.present? %>
+|  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% end %>
 
 <% flash.each do |type, message| %>
   <div class="alert <%= bootstrap_class_for(type) %> alert-success alert-dismissible" role="alert">
